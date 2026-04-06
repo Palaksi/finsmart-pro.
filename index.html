@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinSmart Pro | Advanced Financial Toolkit</title>
+    <link rel="stylesheet" href="src/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="light-mode">
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">FinSmart <span>Pro</span></div>
+            <p>Mastering Finance, Step-by-Step</p>
+        </div>
+        
+        <div class="mode-selectors">
+            <button onclick="toggleMode('CMA')">CMA MODE</button>
+            <button onclick="toggleMode('CA')">CA MODE</button>
+            <button id="examBtn" onclick="toggleExamMode()">📖 EXAM MODE OFF</button>
+        </div>
+
+        <nav>
+            <a href="#" class="nav-item active" onclick="showSection('home')">📊 Dashboard</a>
+            <div class="nav-label">CMA MODULES</div>
+            <a href="#" class="nav-item" onclick="showSection('ratio')">📈 Ratio Analyzer</a>
+            <a href="#" class="nav-item" onclick="showSection('marginal')">📉 Marginal Costing</a>
+            <div class="nav-label">TAX & AUDIT</div>
+            <a href="#" class="nav-item" onclick="showSection('gst')">🧾 GST Invoice</a>
+            <a href="#" class="nav-item" onclick="showSection('tax')">₹ Income Tax</a>
+            <a href="#" class="nav-item" onclick="showSection('audit')">⚖️ Audit & Standards</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button onclick="toggleDarkMode()">🌓 Dark Mode</button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div id="home-sec" class="content-sec">
+            <header class="welcome-header">
+                <h1>Welcome to FinSmart Pro</h1>
+                <p>Your all-in-one financial toolkit — GST invoicing, income tax computation, and exam-ready variance calculations.</p>
+            </header>
+
+            <div class="tools-grid">
+                <div class="tool-card" onclick="showSection('ratio')">
+                    <h3>Ratio Analyzer <span>FINANCE</span></h3>
+                    <p>Current, Quick & Debt-Equity ratios with instant liquidity verdict.</p>
+                    <span class="open-link">Open Tool →</span>
+                </div>
+                <div class="tool-card" onclick="showSection('gst')">
+                    <h3>GST Invoice <span>TAX</span></h3>
+                    <p>Multi-item invoices with CGST/SGST and printable layouts.</p>
+                    <span class="open-link">Open Tool →</span>
+                </div>
+                <div class="tool-card" onclick="showSection('tax')">
+                    <h3>Income Tax <span>TAX</span></h3>
+                    <p>Old & New Regime computation with HRA & 80C deductions.</p>
+                    <span class="open-link">Open Tool →</span>
+                </div>
+            </div>
+
+            <div class="about-section card">
+                <h3>About FinSmart Pro</h3>
+                <p>Built for the Indian finance student (B.Com, CA, CMA). Every calculation follows ICAI/CMA curriculum standards.</p>
+                <div class="features-row">
+                    <span>✅ 100% Accurate</span>
+                    <span>✅ Privacy First</span>
+                    <span>✅ Built for India</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="ratio-sec" class="content-sec" style="display:none;">
+            <h2>📈 Ratio Analyzer</h2>
+            <div class="card">
+                <label>Current Assets (₹)</label>
+                <input type="number" id="currAssets" placeholder="e.g. 500000">
+                <label>Current Liabilities (₹)</label>
+                <input type="number" id="currLiab" placeholder="e.g. 250000">
+                <button class="btn-main" onclick="calcRatio()">Analyze Ratio</button>
+                <div id="ratioResult" class="result-box"></div>
+            </div>
+        </div>
+
+        <div id="tax-sec" class="content-sec" style="display:none;">
+            <h2>₹ Income Tax (FY 2025-26)</h2>
+            <div class="card">
+                <label>Annual Income (₹)</label>
+                <input type="number" id="annualIncome" placeholder="e.g. 1200000">
+                <button class="btn-main" onclick="calcTax()">Compute Tax</button>
+                <div id="taxResult" class="result-box"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="src/script.js"></script>
+</body>
+</html><main class="main-content">
+    <header>
+        <div class="alert-bar">📖 Exam Mode — Working Notes are always visible</div>
+    </header>
+
+    <div id="home-sec" class="content-sec">
+        <div class="welcome-header">
+            <h1>Welcome to FinSmart Pro</h1>
+            <p>Your all-in-one financial toolkit — GST invoicing, income tax computation, ratio analysis, and exam-ready variance calculations, all in one place.</p>
+        </div>
+
+        <div class="tools-grid">
+            <div class="tool-card" onclick="showSection('ratio')">
+                <div class="card-header">
+                    <span class="icon">📄</span>
+                    <span class="tag finance">FINANCE</span>
+                </div>
+                <h4>Ratio Analyzer</h4>
+                <p>Current, Quick & Debt-Equity ratios with instant liquidity verdict.</p>
+                <div class="card-footer">0 analyses <span class="open-link">Open Tool →</span></div>
+            </div>
+
+            <div class="tool-card" onclick="showSection('gst')">
+                <div class="card-header">
+                    <span class="icon">📜</span>
+                    <span class="tag tax">TAX</span>
+                </div>
+                <h4>GST Invoice</h4>
+                <p>Multi-item invoices with CGST/SGST, HSN codes and printable PDF.</p>
+                <div class="card-footer">0 invoices <span class="open-link">Open Tool →</span></div>
+            </div>
+
+            <div class="tool-card" onclick="showSection('tax')">
+                <div class="card-header">
+                    <span class="icon">₹</span>
+                    <span class="tag tax">TAX</span>
+                </div>
+                <h4>Income Tax</h4>
+                <p>Old & New Regime computation, HRA exemption, 80C/80D, Rebate 87A.</p>
+                <div class="card-footer">Open Tool →</div>
+            </div>
+
+            <div class="tool-card" onclick="showSection('cma')">
+                <div class="card-header">
+                    <span class="icon">🎓</span>
+                    <span class="tag exam">EXAM</span>
+                </div>
+                <h4>CMA Exam Assistant</h4>
+                <p>Material, Labour & Overhead variances + Direct Tax with Working Notes.</p>
+                <div class="card-footer">Open Tool →</div>
+            </div>
+
+            <div class="tool-card" onclick="showSection('log')">
+                <div class="card-header">
+                    <span class="icon">🕒</span>
+                    <span class="tag records">RECORDS</span>
+                </div>
+                <h4>Transaction Log</h4>
+                <p>All saved calculations in one place, ready to review or export.</p>
+                <div class="card-footer">0 entries saved <span class="open-link">Open Tool →</span></div>
+            </div>
+        </div>
+    </div>
+</main>
